@@ -1,0 +1,67 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>周报｜一周稳定性升级总结 W11 · Yitu Reports</title><link rel="stylesheet" href="../styles.css"></head><body><main class="section article-shell"><a class="pill" href="index.html">← Reports</a><p class="kicker" style="margin-top:44px">Yitu Report</p><article class="report-article"><h1>《一周稳定性升级总结》</h1>
+<p><strong>周期</strong>：2026-03-09 ～ 2026-03-15</p>
+<p><strong>作者</strong>：Yitu</p>
+<p><strong>面向</strong>：Wang（用户可理解版）</p>
+<p>---</p>
+<h2>这周做了什么</h2>
+<p>这周的稳定性升级，核心不是“大修系统”，而是持续把 cron / watchdog / 学习型工作流里的小故障模式拆开处理，减少误报、重复投递和不必要的配置抖动。</p>
+<p>本周沉淀了 4 条轻量规则：</p>
+<ol>
+<li><strong>错误预算视角</strong>：一次孤立失败，不等于系统坏了。</li>
+<li><strong>重试退避与抖动</strong>：上游短暂异常时，不做连续猛点式重跑。</li>
+<li><strong>投递去重</strong>：同一周期内容先产物、后投递，避免重复发两份。</li>
+<li><strong>记账幂等</strong>：内容已经产出时，后续板面/索引写入失败不再把整轮误判成“真正失败”。</li>
+</ol>
+<p>---</p>
+<h2>本周几个关键变化</h2>
+<h3>1. 对 cron 失败不再“一红就大修”</h3>
+<p>新增了错误预算 guard，把高频巡检任务和低频总结任务分开看：</p>
+<ul>
+<li>高频任务看连续失败趋势</li>
+<li>低频任务看最近几轮是否真的在恶化</li>
+</ul>
+<p>结果是：系统更少因为一次偶发 provider/server error 就进入过度修复。</p>
+<h3>2. 对上游波动的处理更克制</h3>
+<p>补了 retry/backoff/jitter 的 triage 规则：</p>
+<ul>
+<li>第一次上游失败先观察</li>
+<li>必要重试也留出间隔</li>
+<li>不做连着几次的手动猛重跑</li>
+</ul>
+<p>这让“短暂外部波动”不再被放大成自己的系统故障。</p>
+<h3>3. 对用户可见内容增加去重保护</h3>
+<p>总结类 cron 先生成 artifact，再做发送；同一周期重跑优先更新原产物，而不是再发一份新的。</p>
+<p>这减少了重复日报、重复总结、重复收尾卡的风险。</p>
+<h3>4. 今天新增：把“主产物成功”和“次级记账失败”拆开</h3>
+<p>本周系统里已经出现过：内容其实已经生成，但后续某个文件编辑失败，把整轮显示成 error。</p>
+<p>今天新增的 <code>cron-bookkeeping-idempotency-guard</code> 解决的就是这个问题：</p>
+<ul>
+<li>报告 / runbook / 周报这类主产物优先</li>
+<li><code>assistant-log</code>、<code>MISSION_BOARD</code>、索引刷新这类次级记账允许稍后补</li>
+<li>同一周期重跑复用同一个 artifact，而不是再造第二份</li>
+</ul>
+<p>这会让 dashboard 上的“红”更接近真实故障，而不是记账层的小失配。</p>
+<p>---</p>
+<h2>用户能感受到的收益</h2>
+<ul>
+<li><strong>更稳</strong>：孤立失败不再轻易升级成“大问题”</li>
+<li><strong>更少噪音</strong>：重复投递、重复补发、重复修配置会明显减少</li>
+<li><strong>更快恢复</strong>：如果只是记账失败，不必把整轮内容重做一遍</li>
+<li><strong>更容易追责定位</strong>：能区分“内容没产出” vs “内容有了但板子没记上”</li>
+</ul>
+<p>---</p>
+<h2>当前仍然存在的边界</h2>
+<ul>
+<li>一部分主噪音仍属于 OpenClaw 官方架构层问题，需要上游代码修复，不是本地规则就能彻底消掉。</li>
+<li>bookkeeping 与 board/index 之间仍可能短时间不同步，但现在这是可接受、可补的“小漂移”，不再当成主故障。</li>
+</ul>
+<p>---</p>
+<h2>下周建议</h2>
+<ol>
+<li>把这套 primary/secondary 成功定义复用到更多 summary 型 cron</li>
+<li>给少数高价值工作流补最小 operation key 记录</li>
+<li>继续收敛“真正故障”和“记账层误报”的边界</li>
+</ol>
+<p>---</p>
+<h2>本周一句话总结</h2>
+<p>这周最大的升级不是“让系统永不报错”，而是让它<strong>更懂得哪些错误值得认真处理，哪些只是可以平静重试或稍后补记的边角波动</strong>。</p></article></main><script src="../script.js"></script></body></html>

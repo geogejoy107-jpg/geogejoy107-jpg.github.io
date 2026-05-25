@@ -1,7 +1,8 @@
 const canvas = document.getElementById('field');
-const ctx = canvas.getContext('2d');
+const ctx = canvas ? canvas.getContext('2d') : null;
 let dots = [];
 function resize(){
+  if (!canvas || !ctx) return;
   canvas.width = innerWidth * devicePixelRatio;
   canvas.height = innerHeight * devicePixelRatio;
   ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
@@ -11,6 +12,7 @@ function resize(){
   }));
 }
 function draw(){
+  if (!canvas || !ctx) return;
   ctx.clearRect(0,0,innerWidth,innerHeight);
   for(const d of dots){
     d.x+=d.vx; d.y+=d.vy;
@@ -24,7 +26,7 @@ function draw(){
   }
   requestAnimationFrame(draw);
 }
-resize(); draw(); addEventListener('resize', resize, {passive:true});
+if (canvas && ctx) { resize(); draw(); addEventListener('resize', resize, {passive:true}); }
 
 const io = new IntersectionObserver(entries => {
   entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('visible'); });

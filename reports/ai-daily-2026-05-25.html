@@ -1,0 +1,85 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI早报｜2026-05-25 · Yitu Reports</title><link rel="stylesheet" href="../styles.css"></head><body><main class="section article-shell"><a class="pill" href="index.html">← Reports</a><p class="kicker" style="margin-top:44px">Yitu Report</p><article class="report-article"><h1>AI早报｜2026-05-25</h1>
+<blockquote>
+<p>生成时间：2026-05-25 13:21 Asia/Shanghai</p>
+<p>范围：AI 产品/平台、企业落地、开发者工具、治理风险</p>
+<p>数据说明：本次可用证据主要来自搜索结果摘要与少量可访问页面线索；OpenAI/Google 官方页面抓取被安全网关拦截，部分搜索后端不可用。涉及未能交叉验证的细节均按“不可得”处理。</p>
+</blockquote>
+<h2>短版：今天先做这 4 件事</h2>
+<ol>
+<li><strong>把 AI Agent 试点改成“可验收流程”</strong>：优先选 1 个重复业务流（客服工单、销售线索、代码修复、内容审核），写清输入、工具权限、人工确认点、失败回退和验收指标。</li>
+<li><strong>更新开发者工具评估表</strong>：Google I/O 线索显示 Gemini/API/AI Studio/Antigravity 等开发者与 agent 平台继续加速；Anthropic Code with Claude 线索也偏向托管 agent、编排和代码工作流。今天应补一轮“速度、成本、权限隔离、审计日志、回滚能力”对比。</li>
+<li><strong>企业知识接入先做权限审计</strong>：OpenAI 企业线索强调 workspace agents、Slack/连接器与 EKM；上线前先确认：最小权限、数据驻留、密钥管理、日志留存、越权读取测试。</li>
+<li><strong>EU AI Act/GPAI 合规进入行动清单</strong>：把模型/agent 用途按风险分类，记录供应商、数据来源、用户告知、人工监督与评测结果；本周至少完成一版 AI 系统台账。</li>
+</ol>
+<h2>长版</h2>
+<h3>1. 最重要趋势</h3>
+<h4>趋势 A：从“聊天入口”转向“流程型 Agent”</h4>
+<ul>
+<li>多条线索集中在 enterprise agents / coding agents / workspace agents / managed agents。</li>
+<li>实际含义：竞争点不再只是模型能力，而是能否安全调用工具、跨系统执行、可审计、可回滚、可验收。</li>
+<li>对团队的启发：不要再用“模型回答好不好”作为主要评估标准，要用“任务完成率 + 人工接管率 + 权限事故数 + 单次成本”评估。</li>
+</ul>
+<h4>趋势 B：开发者平台正在把 Agent 工程产品化</h4>
+<ul>
+<li>Google I/O 2026 搜索摘要显示：Gemini API、AI Studio、Antigravity 2.0、agent 工具是重点。</li>
+<li>Anthropic Code with Claude 2026 搜索摘要显示：Managed Agents、multi-agent orchestration、Claude Code 工作流是重点。</li>
+<li>OpenAI 搜索摘要显示：Codex 被定位为企业级 coding agents，ChatGPT workspace agents 面向重复业务流。</li>
+<li>落地判断：未来 1-2 个季度，agent 平台的“默认能力”会快速上移；自研部分应集中在业务上下文、权限策略、评测和流程集成，而不是重复造基础编排。</li>
+</ul>
+<h4>趋势 C：合规从“政策观察”变成“上线门禁”</h4>
+<ul>
+<li>EU AI Act/GPAI Code of Practice 搜索摘要显示：GPAI 合规、透明度、风险分类和供应商责任仍是 2026 企业 AI 的硬约束。</li>
+<li>企业落地含义：任何面向用户或影响业务决策的 agent，都要有用途说明、风险分类、人工监督、日志和评测记录。</li>
+</ul>
+<h3>2. 今天/本周落地动作</h3>
+<ol>
+<li><strong>选 1 个 Agent 流程做最小闭环</strong></li>
+</ol>
+<p>   - 模板：触发条件 → 输入数据 → 可调用工具 → 人工确认点 → 输出格式 → 失败回退。</p>
+<p>   - 验收：连续 20 个样本，任务完成率 ≥ 80%，无越权访问，人工接管原因可分类。</p>
+<ol>
+<li><strong>建立 Agent 权限矩阵</strong></li>
+</ol>
+<p>   - 按“只读 / 草稿 / 需确认执行 / 自动执行”四档标注每个工具。</p>
+<p>   - 对 Slack、邮箱、CRM、代码仓库、工单系统等连接器做最小权限检查。</p>
+<ol>
+<li><strong>补齐 AI 系统台账</strong></li>
+</ol>
+<p>   - 字段：系统名、用途、供应商/模型、输入数据、输出影响、用户告知、人工监督、日志位置、评测集、负责人。</p>
+<p>   - 优先覆盖：客服、销售、HR、财务、代码生成/部署相关场景。</p>
+<ol>
+<li><strong>重做开发者工具 PoC 指标</strong></li>
+</ol>
+<p>   - 不只看生成质量；加入：端到端耗时、token/调用成本、失败恢复、审计日志、IDE/CI 集成、私有代码处理方式。</p>
+<h3>3. 主要风险</h3>
+<ul>
+<li><strong>供应商宣传与可验证事实混杂</strong>：部分搜索结果来自二级站点或聚合站，存在夸大/错误风险。</li>
+<li><strong>Agent 越权执行</strong>：连接 Slack、邮箱、代码仓库后，权限边界比模型质量更关键。</li>
+<li><strong>评测缺口</strong>：没有真实样本集与失败分类时，agent 很容易在 demo 中表现好、上线后失控。</li>
+<li><strong>合规滞后</strong>：EU AI Act/GPAI 相关要求会影响透明度、文档、评测与供应商管理；不能等产品上线后补。</li>
+</ul>
+<h3>4. 验收标准</h3>
+<ul>
+<li><strong>流程验收</strong>：每个 agent 流程都有输入/工具/人工确认/回退/指标五要素。</li>
+<li><strong>权限验收</strong>：所有外部连接器完成最小权限配置，自动执行类动作默认关闭或需审批。</li>
+<li><strong>质量验收</strong>：至少 20 条真实或脱敏样本，记录成功、失败、人工接管和成本。</li>
+<li><strong>合规验收</strong>：AI 系统台账覆盖本周所有新增/变更场景；高风险或影响用户权益的场景必须有人审。</li>
+</ul>
+<h3>5. 数据缺口：不可得 + 原因 + 补救动作</h3>
+<div class="table-like">
+<div class="table-row"><span>项目</span><span>状态</span><span>原因</span><span>补救动作</span></div>
+<div class="table-row"><span>Tavily/SerpAPI 原始结果</span><span>不可得</span><span>当前运行环境未暴露 Tavily/SerpAPI 工具，只能使用可用 web_search/抓取替代</span><span>下次定时任务接入 Tavily/SerpAPI 原始 JSON，并保存到证据目录</span></div>
+<div class="table-row"><span>OpenAI/Google 官方页面全文</span><span>不可得</span><span>web_fetch 对部分官方域名返回安全网关拦截；直接抓取 OpenAI 返回 403</span><span>用官方 RSS/API、浏览器抓取或允许名单域名重试；仅把搜索摘要作为弱证据</span></div>
+<div class="table-row"><span>Anthropic/Microsoft 全量官方公告交叉验证</span><span>不可得/部分可得</span><span>搜索结果可见，但全文未稳定抓取；部分结果来自二级媒体或聚合站</span><span>优先抓取 anthropic.com、microsoft.com、learn.microsoft.com 官方链接；二级来源只作线索</span></div>
+<div class="table-row"><span>量化市场数据/价格/采用率</span><span>不可得</span><span>本次未接入财经/API 数据源，且任务重点为实用 feed</span><span>如需要商业影响，补接公司公告、财报、Similarweb/招聘/云服务价格等数据</span></div>
+</div>
+<h3>6. 今日信号来源（按可信度排序）</h3>
+<ul>
+<li>OpenAI 搜索摘要：OpenAI News；“OpenAI named a Leader in enterprise coding agents by Gartner”；ChatGPT Enterprise/Edu release notes 中 workspace agents、EKM、Slack 连接器线索。</li>
+<li>Google 搜索摘要：Google I/O 2026 developer highlights；Gemini API、AI Studio、Antigravity、agent tools 线索。</li>
+<li>Anthropic 搜索摘要：Code with Claude 2026；Managed Agents、multi-agent orchestration、Claude Code 工作流线索。</li>
+<li>Microsoft/Learn 搜索摘要：Copilot Studio 2026 release wave 1；agentic workflows、enterprise knowledge、governance 线索。</li>
+<li>European Commission/EU AI Act 搜索摘要：GPAI Code of Practice、AI Act compliance/透明度线索。</li>
+</ul>
+<h2>结论</h2>
+<p>今天的重点不是追逐单个模型发布，而是把 AI Agent 做成<strong>可授权、可审计、可回滚、可验收</strong>的业务能力。本周最值得投入的是：一个真实流程闭环、一个权限矩阵、一份 AI 系统台账。</p></article></main><script src="../script.js"></script></body></html>
