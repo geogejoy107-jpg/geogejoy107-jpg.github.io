@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Jiwu / Wang 的个人简介页面：AI-native builder, workflow designer, curious operator." />
+  <meta name="theme-color" content="#0b0d12" />
+  <title>Jiwu Wang · Personal Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <main class="page-shell">
+    <nav class="nav" aria-label="页面导航">
+      <a class="mark" href="#top" aria-label="回到顶部">JW</a>
+      <div class="nav-links">
+        <a href="#about">关于</a>
+        <a href="#work">关注</a>
+        <a href="#notes">原则</a>
+      </div>
+    </nav>
+
+    <section id="top" class="hero section">
+      <div class="hero-copy">
+        <p class="eyebrow">AI-native operator · Builder · Systems thinker</p>
+        <h1>Jiwu Wang</h1>
+        <p class="lede">我把复杂问题拆成可运行的系统：用 AI、自动化和清晰的工作流，把想法变成稳定、可复用、能持续进化的东西。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#work">See focus areas</a>
+          <a class="button ghost" href="https://github.com/geogejoy107-jpg" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
+      </div>
+
+      <aside class="profile-card" aria-label="Profile summary">
+        <div class="orb"></div>
+        <div class="card-top">
+          <span class="status-dot"></span>
+          <span>Currently exploring</span>
+        </div>
+        <h2>Human × AI workflows</h2>
+        <p>长期关注个人生产力、AI Agent 协作、信息摄取与知识沉淀。偏好低噪音、高信号、可落地的工具和系统。</p>
+        <dl>
+          <div><dt>Style</dt><dd>Calm, sharp, practical</dd></div>
+          <div><dt>Mode</dt><dd>Prototype → verify → iterate</dd></div>
+          <div><dt>Base</dt><dd>New York / Shanghai rhythm</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <section id="about" class="section split">
+      <div>
+        <p class="section-kicker">About</p>
+        <h2>一个偏系统化的人。</h2>
+      </div>
+      <div class="body-copy">
+        <p>我喜欢把模糊的兴趣、零散的信息和重复的流程，整理成可以被执行、复盘、优化的结构。相比热闹的表达，我更在意判断质量、执行密度和长期可维护性。</p>
+        <p>这个页面目前是一个低调版本：不夸张包装，只保留轮廓。后续可以继续补上真实项目、文章、照片、联系方式和更准确的个人叙事。</p>
+      </div>
+    </section>
+
+    <section id="work" class="section">
+      <p class="section-kicker">Focus</p>
+      <div class="grid cards">
+        <article class="tile">
+          <span>01</span>
+          <h3>AI 工作流</h3>
+          <p>把 AI 从“聊天工具”推进到“可靠协作者”：路由、记忆、任务拆解、评估与自动化闭环。</p>
+        </article>
+        <article class="tile">
+          <span>02</span>
+          <h3>知识系统</h3>
+          <p>从链接、日报、研究和实践中提炼高价值信息，让知识能够被检索、复用、更新。</p>
+        </article>
+        <article class="tile">
+          <span>03</span>
+          <h3>产品与工程</h3>
+          <p>偏爱小而锋利的工具：界面克制，逻辑清楚，自动化优先，能被真实使用验证。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="notes" class="section manifesto">
+      <p class="section-kicker">Notes</p>
+      <h2>低噪音，高信号；少一点表演，多一点真实进展。</h2>
+      <div class="principles">
+        <p>做判断时重视证据。</p>
+        <p>做系统时重视可维护性。</p>
+        <p>做表达时重视克制和清楚。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© <span id="year"></span> Jiwu Wang</span>
+    <span>Built as a quiet personal homepage.</span>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

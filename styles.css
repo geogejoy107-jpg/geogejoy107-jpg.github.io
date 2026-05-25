@@ -1,0 +1,95 @@
+:root {
+  color-scheme: dark;
+  --bg: #080a0f;
+  --panel: rgba(255,255,255,.065);
+  --panel-strong: rgba(255,255,255,.11);
+  --text: #f4f1ea;
+  --muted: #aaa398;
+  --line: rgba(255,255,255,.12);
+  --gold: #d8b36b;
+  --blue: #7aa7ff;
+  --radius: 28px;
+  --shadow: 0 24px 80px rgba(0,0,0,.45);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(122,167,255,.16), transparent 28rem),
+    radial-gradient(circle at 86% 16%, rgba(216,179,107,.14), transparent 24rem),
+    linear-gradient(145deg, #080a0f 0%, #10131b 52%, #090a0d 100%);
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+.grain {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: .22;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+.page-shell { width: min(1120px, calc(100% - 36px)); margin: 0 auto; }
+.nav {
+  position: sticky; top: 18px; z-index: 5;
+  display: flex; align-items: center; justify-content: space-between;
+  margin: 18px 0 72px; padding: 10px 12px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(8,10,15,.58); backdrop-filter: blur(22px); box-shadow: var(--shadow);
+}
+.mark { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%; background: var(--text); color: #0b0d12; font-weight: 800; letter-spacing: -.04em; }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a { padding: 12px 16px; color: var(--muted); border-radius: 999px; font-size: 14px; }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,.07); }
+.section { padding: 70px 0; }
+.hero { min-height: 72vh; display: grid; grid-template-columns: 1.08fr .92fr; gap: 56px; align-items: center; padding-top: 20px; }
+.eyebrow, .section-kicker { color: var(--gold); text-transform: uppercase; letter-spacing: .18em; font-size: 12px; font-weight: 800; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: clamp(64px, 11vw, 144px); line-height: .86; letter-spacing: -.085em; margin-bottom: 26px; }
+h2 { font-size: clamp(32px, 5vw, 62px); line-height: .98; letter-spacing: -.055em; margin-bottom: 0; }
+h3 { font-size: 24px; letter-spacing: -.03em; }
+.lede { max-width: 680px; color: #d9d3c9; font-size: clamp(19px, 2.15vw, 28px); line-height: 1.45; letter-spacing: -.025em; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 34px; }
+.button { display: inline-flex; align-items: center; justify-content: center; height: 48px; padding: 0 20px; border-radius: 999px; border: 1px solid var(--line); font-weight: 700; font-size: 14px; }
+.button.primary { background: var(--text); color: #0b0d12; }
+.button.ghost { color: var(--text); background: rgba(255,255,255,.045); }
+.button:hover { transform: translateY(-1px); }
+.profile-card { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; background: linear-gradient(180deg, var(--panel-strong), rgba(255,255,255,.04)); box-shadow: var(--shadow); min-height: 480px; isolation: isolate; }
+.orb { position: absolute; width: 260px; height: 260px; border-radius: 50%; right: -72px; top: -62px; background: radial-gradient(circle at 30% 30%, #fff3, transparent 25%), linear-gradient(135deg, rgba(216,179,107,.55), rgba(122,167,255,.34)); filter: blur(.2px); z-index: -1; }
+.card-top { display: inline-flex; align-items: center; gap: 8px; color: #d7d1c8; font-size: 13px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 999px; background: rgba(0,0,0,.18); }
+.status-dot { width: 8px; height: 8px; border-radius: 50%; background: #88f2b1; box-shadow: 0 0 20px #88f2b1; }
+.profile-card h2 { margin: 110px 0 18px; font-family: "Noto Serif SC", serif; font-size: clamp(34px, 4vw, 54px); letter-spacing: -.06em; }
+.profile-card p, .body-copy p, .tile p { color: var(--muted); line-height: 1.75; }
+dl { margin: 30px 0 0; display: grid; gap: 12px; }
+dl div { display: flex; justify-content: space-between; gap: 18px; border-top: 1px solid var(--line); padding-top: 13px; }
+dt { color: var(--muted); } dd { margin: 0; font-weight: 700; text-align: right; }
+.split { display: grid; grid-template-columns: .85fr 1.15fr; gap: 72px; align-items: start; border-top: 1px solid var(--line); }
+.body-copy { font-size: 19px; }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.tile { min-height: 300px; padding: 26px; border: 1px solid var(--line); border-radius: 24px; background: var(--panel); backdrop-filter: blur(18px); transition: transform .25s ease, background .25s ease, border-color .25s ease; }
+.tile:hover { transform: translateY(-6px); background: var(--panel-strong); border-color: rgba(216,179,107,.35); }
+.tile span { display: inline-flex; margin-bottom: 82px; color: var(--gold); font-weight: 800; }
+.manifesto { border-top: 1px solid var(--line); }
+.manifesto h2 { max-width: 900px; font-family: "Noto Serif SC", serif; }
+.principles { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px; }
+.principles p { margin: 0; color: #d8d2c8; border: 1px solid var(--line); border-radius: 999px; padding: 12px 16px; background: rgba(255,255,255,.045); }
+.footer { width: min(1120px, calc(100% - 36px)); margin: 0 auto; padding: 36px 0 54px; display: flex; justify-content: space-between; gap: 18px; color: var(--muted); border-top: 1px solid var(--line); font-size: 14px; }
+@media (max-width: 860px) {
+  .nav { margin-bottom: 36px; }
+  .hero, .split, .grid { grid-template-columns: 1fr; }
+  .hero { gap: 28px; }
+  .section { padding: 48px 0; }
+  .profile-card { min-height: 390px; }
+  .profile-card h2 { margin-top: 70px; }
+  .tile { min-height: 230px; }
+  .tile span { margin-bottom: 46px; }
+  .footer { flex-direction: column; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .profile-card { animation: float 7s ease-in-out infinite; }
+  @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+}
